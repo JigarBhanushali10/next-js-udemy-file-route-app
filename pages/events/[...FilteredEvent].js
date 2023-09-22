@@ -6,14 +6,17 @@ import EventList from "../../components/events/EventList";
 function FilteredEvent() {
   const router = useRouter();
   const filteredEvent = router.query.FilteredEvent;
-  let filteredEvents = [];
-  console.log(filteredEvents.length);
   if (filteredEvent) {
-    filteredEvents = getFilteredEvents({
+    const filteredEvents = getFilteredEvents({
       year: +filteredEvent[0],
       month: +filteredEvent[1],
     });
-    return <EventList items={filteredEvents}></EventList>;
+
+    if (!filteredEvents.length) {
+      return <h3>No Event Found</h3>;
+    } else {
+      return <EventList items={filteredEvents}></EventList>;
+    }
   }
 }
 

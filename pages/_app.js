@@ -5,7 +5,9 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Header />
-      <Component {...pageProps} />
+      <main className="overflow-vertical grow-1">
+        <Component {...pageProps} />
+      </main>
     </>
   );
 }

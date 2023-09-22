@@ -3,7 +3,7 @@ import classes from "../../styles/event-item.module.css";
 import DateIcon from "../icons/DateIcon";
 import AddressIcon from "../icons/AddressIcon";
 import ArrowIcon from "../icons/ArrowIcon";
-import Button from "../ui/button";
+import Button from "../ui/Button";
 
 function EventItem({ title, date, image, address, id }) {
   const readableDate = new Date(date).toLocaleDateString("en-US", {

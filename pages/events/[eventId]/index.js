@@ -1,14 +1,28 @@
 import { useRouter } from "next/router";
-import React from "react";
-import { getEventById } from "../../../dummy_data/dummy-data";
-import EventSummary from "../../../components/events/event-detail/EventSummary";
-import EventLogistics from "../../../components/events/event-detail/EventLogistics";
+import React, { useEffect, useState } from "react";
 import EventContent from "../../../components/events/event-detail/EventContent";
+import EventLogistics from "../../../components/events/event-detail/EventLogistics";
+import EventSummary from "../../../components/events/event-detail/EventSummary";
 
 function Event() {
   const router = useRouter();
+  const [event, setEvent] = useState()
+
+
   const eventId = router.query.eventId;
-  const event = getEventById(eventId);
+  useEffect(() => {
+    console.log(eventId);
+    if (eventId) {
+
+      fetch(`http://localhost:3000/api/events/${eventId}`).then((res) => {
+        return res.json()
+      }).then((res) => {
+        setEvent(res)
+      })
+    }
+
+  }, [router.query.eventId])
+
   if (!event) {
     return <h3>No Event Found</h3>;
   }

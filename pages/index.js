@@ -1,11 +1,50 @@
+import { useEffect, useState } from "react";
 import EventList from "../components/events/EventList";
-import { getFeaturedEvents } from "../dummy_data/dummy-data";
 
 function Home() {
-  const featuredEvents = getFeaturedEvents();
+  const [featuredEvents, setFeaturedEvents] = useState()
+
+
+  const deleteEvent = (id) => {
+
+    let text = "Click on Yes to delete Event";
+    if (confirm(text) == true) {
+
+      fetch(`http://localhost:3000/api/events/${id}`, {
+        method: 'DELETE',
+      }).then((res) => {
+        return res.json()
+      }).then((res) => {
+        console.log(res);
+        getFeaturedEvents()
+      })
+    } else {
+      return
+    }
+
+
+  }
+
+
+  const getFeaturedEvents = () => {
+    fetch('http://localhost:3000/api/events', {
+      method: 'GET',
+      headers: {
+        'isFeatured': true,
+      },
+    }).then((res) => {
+      return res.json()
+    }).then((res) => {
+      setFeaturedEvents(res.events)
+    })
+  }
+  useEffect(() => {
+    getFeaturedEvents()
+
+  }, [])
   return (
     <div>
-      <EventList items={featuredEvents}></EventList>
+      <EventList items={featuredEvents} deleteEvent={deleteEvent}></EventList>
     </div>
   );
 }

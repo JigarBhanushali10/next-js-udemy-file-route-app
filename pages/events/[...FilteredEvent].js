@@ -1,16 +1,26 @@
-import React from "react";
-import { getFilteredEvents } from "../../dummy_data/dummy-data";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import EventList from "../../components/events/EventList";
 
 function FilteredEvent() {
+  const [filteredEvents, setFilteredEvents] = useState([])
   const router = useRouter();
   const filteredEvent = router.query.FilteredEvent;
+  useEffect(() => {
+    if (filteredEvent) {
+      fetch(`http://localhost:3000/api/events/${filteredEvent.join('/')}`).then((res) => {
+        return res.json()
+      }).then((res) => {
+        console.log(res?.events);
+        setFilteredEvents(res)
+      })
+    }
+
+  }, [])
   if (filteredEvent) {
-    const filteredEvents = getFilteredEvents({
-      year: +filteredEvent[0],
-      month: +filteredEvent[1],
-    });
+    console.log(filteredEvent);
+
+
 
     if (!filteredEvents.length) {
       return <h3>No Event Found</h3>;

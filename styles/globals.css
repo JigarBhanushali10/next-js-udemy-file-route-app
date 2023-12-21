@@ -3,12 +3,14 @@
 * {
   box-sizing: border-box;
 }
+
 html,
 body,
 #__next {
   height: 100%;
   width: 100%;
 }
+
 body {
   margin: 0;
   font-family: "Open Sans", "Lato", sans-serif;
@@ -21,6 +23,7 @@ body {
   display: flex;
   flex-direction: column;
 }
+
 .grow-1 {
   flex-grow: 1;
 }
@@ -45,6 +48,7 @@ ul {
   margin: auto;
   text-align: center;
 }
+
 .overflow-vertical {
   overflow-y: auto;
   overflow-x: hidden;

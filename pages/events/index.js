@@ -1,12 +1,44 @@
-import React from "react";
-import { getAllEvents } from "../../dummy_data/dummy-data";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
 import EventList from "../../components/events/EventList";
 import EventsSearch from "../../components/events/events-search/EventsSearch";
-import { useRouter } from "next/router";
 
 function EventDetail() {
   const router = useRouter();
-  const allEvents = getAllEvents();
+
+  const [allEvents, setAllEvents] = useState()
+
+  const deleteEvent = (id) => {
+
+    let text = "Click on Yes to delete Event";
+    if (confirm(text) == true) {
+
+      fetch(`http://localhost:3000/api/events/${id}`, {
+        method: 'DELETE',
+      }).then((res) => {
+        return res.json()
+      }).then((res) => {
+        console.log(res);
+        getAllEvents()
+      })
+    } else {
+      return
+    }
+  }
+
+
+  const getAllEvents = () => {
+
+    fetch('http://localhost:3000/api/events').then((res) => {
+      return res.json()
+    }).then((res) => {
+      console.log(res.events);
+      setAllEvents(res.events)
+    })
+  }
+  useEffect(() => {
+    getAllEvents()
+  }, [])
 
   function onSearch({ month, year }) {
     router.push(`/events/${year}/${month}`);
@@ -15,7 +47,7 @@ function EventDetail() {
   return (
     <>
       <EventsSearch onSearch={onSearch}></EventsSearch>
-      <EventList items={allEvents}></EventList>
+      <EventList items={allEvents} deleteEvent={deleteEvent}></EventList>
     </>
   );
 }

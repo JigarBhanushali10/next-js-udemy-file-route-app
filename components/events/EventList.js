@@ -1,11 +1,16 @@
 import React from "react";
-import EventItem from "./EventItem";
 import classes from "../../styles/event-list.module.css";
+import EventItem from "./EventItem";
 
-function EventList({ items }) {
+function EventList({ items, deleteEvent }) {
+
+
+
+
+
   return (
     <ul className={classes.list}>
-      {items.map((item) => {
+      {items?.map((item) => {
         return (
           <EventItem
             key={item.id}
@@ -14,6 +19,7 @@ function EventList({ items }) {
             image={item.image}
             address={item.address}
             date={item.date}
+            deleteEvent={deleteEvent}
           ></EventItem>
         );
       })}

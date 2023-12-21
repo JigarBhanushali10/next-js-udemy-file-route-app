@@ -22,6 +22,8 @@ function EventsSearch({ onSearch }) {
           <select id="year" ref={yearFilter}>
             <option value={"2021"}>2021</option>
             <option value={"2022"}>2022</option>
+            <option value={"2023"}>2023</option>
+            <option value={"2024"}>2024</option>
           </select>
         </div>
         <div className={classes.control}>
@@ -43,6 +45,7 @@ function EventsSearch({ onSearch }) {
         </div>
       </div>
       <Button>Find Events</Button>
+      <Button link={'events/add'}>Add Event</Button>
     </form>
   );
 }

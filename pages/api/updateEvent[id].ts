@@ -3,6 +3,7 @@ import fs from "fs";
 import { NextApiRequest, NextApiResponse } from "next";
 import path from "path";
 import events from "../../data/events.json";
+import cors, { runMiddleware } from "../../utils/cors";
 
 const eventsFilePath = path.join(
   process.cwd(),
@@ -10,10 +11,11 @@ const eventsFilePath = path.join(
   "dummy-data.json"
 );
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<any>
 ) {
+  await runMiddleware(req, res, cors);
   const { id } = req.query;
   const { title, description } = req.body;
   const taskIndex = events.findIndex((t) => t.id === id);

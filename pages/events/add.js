@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from '../../styles/form.module.css';
 
 import Button from "../../components/ui/Button";
+import { API_BASE_URL } from '../../utils/config';
 
 function Add() {
   const [formData, setFormData] = useState({
@@ -26,7 +27,7 @@ function Add() {
     // Add your logic to submit the form data (e.g., send it to an API)
     console.log('Form Data:', formData);
 
-    fetch(`http://localhost:3000/api/events/addEvent`, {
+    fetch(`${API_BASE_URL}events/addEvent`, {
       method: 'POST',
       body: JSON.stringify(formData),
     }).then((res) => {

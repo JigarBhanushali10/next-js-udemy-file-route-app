@@ -2,6 +2,7 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import EventList from "../../components/events/EventList";
 import EventsSearch from "../../components/events/events-search/EventsSearch";
+import { API_BASE_URL } from "../../utils/config";
 
 function EventDetail() {
   const router = useRouter();
@@ -13,7 +14,7 @@ function EventDetail() {
     let text = "Click on Yes to delete Event";
     if (confirm(text) == true) {
 
-      fetch(`http://localhost:3000/api/events/${id}`, {
+      fetch(`${API_BASE_URL}events/${id}`, {
         method: 'DELETE',
       }).then((res) => {
         return res.json()
@@ -29,7 +30,7 @@ function EventDetail() {
 
   const getAllEvents = () => {
 
-    fetch('http://localhost:3000/api/events').then((res) => {
+    fetch(`${API_BASE_URL}events`).then((res) => {
       return res.json()
     }).then((res) => {
       console.log(res.events);

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styles from '../../../styles/form.module.css';
 
 import Button from "../../../components/ui/Button";
+import { API_BASE_URL } from "../../../utils/config";
 
 function Edit() {
   const router = useRouter();
@@ -24,7 +25,7 @@ function Edit() {
     console.log(eventId);
     if (eventId) {
 
-      fetch(`http://localhost:3000/api/events/${eventId}`).then((res) => {
+      fetch(`${API_BASE_URL}events/${eventId}`).then((res) => {
         return res.json()
       }).then((res) => {
         setFormData(res)
@@ -46,7 +47,7 @@ function Edit() {
     // Add your logic to submit the form data (e.g., send it to an API)
     console.log('Form Data:', formData);
 
-    fetch(`http://localhost:3000/api/events/${eventId}`, {
+    fetch(`${API_BASE_URL}events/${eventId}`, {
       method: 'PUT',
       body: JSON.stringify(formData),
     }).then((res) => {

@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import EventList from "../components/events/EventList";
-
+import { API_BASE_URL } from '../utils/config';
 function Home() {
   const [featuredEvents, setFeaturedEvents] = useState()
 
 
   const deleteEvent = (id) => {
-
+    console.log(API_BASE_URL)
     let text = "Click on Yes to delete Event";
     if (confirm(text) == true) {
-
-      fetch(`http://localhost:3000/api/events/${id}`, {
+      fetch(`${API_BASE_URL}events/${id}`, {
         method: 'DELETE',
       }).then((res) => {
         return res.json()
@@ -27,7 +26,7 @@ function Home() {
 
 
   const getFeaturedEvents = () => {
-    fetch('http://localhost:3000/api/events', {
+    fetch(`${API_BASE_URL}events`, {
       method: 'GET',
       headers: {
         'isFeatured': true,

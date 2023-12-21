@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import EventList from "../../components/events/EventList";
+import { API_BASE_URL } from "../../utils/config";
 
 function FilteredEvent() {
   const [filteredEvents, setFilteredEvents] = useState([])
@@ -8,7 +9,7 @@ function FilteredEvent() {
   const filteredEvent = router.query.FilteredEvent;
   useEffect(() => {
     if (filteredEvent) {
-      fetch(`http://localhost:3000/api/events/${filteredEvent.join('/')}`).then((res) => {
+      fetch(`${API_BASE_URL}events/${filteredEvent.join('/')}`).then((res) => {
         return res.json()
       }).then((res) => {
         console.log(res?.events);

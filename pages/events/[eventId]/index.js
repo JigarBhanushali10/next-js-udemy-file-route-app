@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import EventContent from "../../../components/events/event-detail/EventContent";
 import EventLogistics from "../../../components/events/event-detail/EventLogistics";
 import EventSummary from "../../../components/events/event-detail/EventSummary";
+import { API_BASE_URL } from "../../../utils/config";
 
 function Event() {
   const router = useRouter();
@@ -14,7 +15,7 @@ function Event() {
     console.log(eventId);
     if (eventId) {
 
-      fetch(`http://localhost:3000/api/events/${eventId}`).then((res) => {
+      fetch(`${API_BASE_URL}events/${eventId}`).then((res) => {
         return res.json()
       }).then((res) => {
         setEvent(res)

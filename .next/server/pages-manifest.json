@@ -2,5 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/api/events": "pages/api/events.js",
+  "/events/[...FilteredEvent]": "pages/events/[...FilteredEvent].js",
+  "/": "pages/index.js",
+  "/api/events/[...filteredEvents]": "pages/api/events/[...filteredEvents].js",
+  "/events/[eventId]": "pages/events/[eventId].js",
+  "/api/events/[id]": "pages/api/events/[id].js",
+  "/events": "pages/events.js",
   "/events/edit/[id]": "pages/events/edit/[id].js"
 }

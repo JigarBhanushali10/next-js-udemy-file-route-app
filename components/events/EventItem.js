@@ -6,7 +6,7 @@ import AddressIcon from "../icons/AddressIcon";
 import ArrowIcon from "../icons/ArrowIcon";
 import DateIcon from "../icons/DateIcon";
 import DeleteIcon from "../icons/DeleteIcon";
-import EditIcon from "../icons/editIcon";
+import EditIcon from "../icons/EditIcon";
 import Button from "../ui/Button";
 
 function EventItem({ title, date, image, address, id, deleteEvent }) {

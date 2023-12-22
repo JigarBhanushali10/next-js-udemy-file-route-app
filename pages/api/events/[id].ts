@@ -8,10 +8,7 @@ import cors, { runMiddleware } from "../../../utils/cors";
 
 const eventsFilePath = path.join(process.cwd(), "data", "events.json");
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<any>
-) {
+export async function handler(req: NextApiRequest, res: NextApiResponse<any>) {
   await runMiddleware(req, res, cors);
   const { id } = req.query;
   const event = events.find((t) => t.id === id);

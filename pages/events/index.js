@@ -14,7 +14,7 @@ function EventDetail() {
     let text = "Click on Yes to delete Event";
     if (confirm(text) == true) {
 
-      fetch(`${API_BASE_URL}events/${id}`, {
+      fetch(`/api/events/${id}`, {
         method: 'DELETE',
       }).then((res) => {
         return res.json()
@@ -30,7 +30,7 @@ function EventDetail() {
 
   const getAllEvents = () => {
 
-    fetch(`${API_BASE_URL}events`).then((res) => {
+    fetch(`/api/events`).then((res) => {
       return res.json()
     }).then((res) => {
       console.log(res.events);

@@ -9,7 +9,7 @@ function FilteredEvent() {
   const filteredEvent = router.query.FilteredEvent;
   useEffect(() => {
     if (filteredEvent) {
-      fetch(`${API_BASE_URL}events/${filteredEvent.join('/')}`).then((res) => {
+      fetch(`/api/events/${filteredEvent.join('/')}`).then((res) => {
         return res.json()
       }).then((res) => {
         console.log(res?.events);

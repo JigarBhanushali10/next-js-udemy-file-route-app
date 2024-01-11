@@ -15,7 +15,7 @@ function Event() {
     console.log(eventId);
     if (eventId) {
 
-      fetch(`${API_BASE_URL}events/${eventId}`).then((res) => {
+      fetch(`/api/events/${eventId}`).then((res) => {
         return res.json()
       }).then((res) => {
         setEvent(res)

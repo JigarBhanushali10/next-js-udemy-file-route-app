@@ -27,7 +27,7 @@ function Add() {
     // Add your logic to submit the form data (e.g., send it to an API)
     console.log('Form Data:', formData);
 
-    fetch(`${API_BASE_URL}events/addEvent`, {
+    fetch(`/api/events/addEvent`, {
       method: 'POST',
       body: JSON.stringify(formData),
     }).then((res) => {

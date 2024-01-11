@@ -25,7 +25,7 @@ function Edit() {
     console.log(eventId);
     if (eventId) {
 
-      fetch(`${API_BASE_URL}events/${eventId}`).then((res) => {
+      fetch(`/api/events/${eventId}`).then((res) => {
         return res.json()
       }).then((res) => {
         setFormData(res)
@@ -47,7 +47,7 @@ function Edit() {
     // Add your logic to submit the form data (e.g., send it to an API)
     console.log('Form Data:', formData);
 
-    fetch(`${API_BASE_URL}events/${eventId}`, {
+    fetch(`/api/events/${eventId}`, {
       method: 'PUT',
       body: JSON.stringify(formData),
     }).then((res) => {

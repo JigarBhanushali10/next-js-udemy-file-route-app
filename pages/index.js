@@ -9,7 +9,7 @@ function Home() {
     console.log(API_BASE_URL)
     let text = "Click on Yes to delete Event";
     if (confirm(text) == true) {
-      fetch(`${API_BASE_URL}events/${id}`, {
+      fetch(`/api/events/${id}`, {
         method: 'DELETE',
       }).then((res) => {
         return res.json()
@@ -26,7 +26,7 @@ function Home() {
 
 
   const getFeaturedEvents = () => {
-    fetch(`${API_BASE_URL}events`, {
+    fetch(`/api/events`, {
       method: 'GET',
       headers: {
         'isFeatured': true,
